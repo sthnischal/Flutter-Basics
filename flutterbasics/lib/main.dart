@@ -45,15 +45,32 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Flutter Container'),
+        title: Text('Types of Button in Flutter'),
       ),
-      body: Text('Hello Flutter Devs',
-          style: TextStyle(
-            fontSize: 25,
-            color: Colors.lightBlue,
-            fontWeight: FontWeight.bold,
-            backgroundColor: Colors.deepOrangeAccent,
-          )),
+      body:
+          //TextButton(
+          // child: Text('Click Here'),
+          //  onPressed: () {
+          //    print('Text Button Presssed');
+          //  },
+          //  onLongPress: () {
+          //    print('Long Pressed button');
+          //  },
+          //),
+
+          //ElevatedButton(
+          //  child: Text('Elevated Button'),
+          //  onPressed: () {
+          //    print('Elevated Button Pressed');
+          //  },
+          //),
+
+          OutlinedButton(
+        child: Text('Click Here'),
+        onPressed: () {
+          print('Outlined Button Pressed');
+        },
+      ),
     );
   }
 }
