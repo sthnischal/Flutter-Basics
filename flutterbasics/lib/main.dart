@@ -46,16 +46,120 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text('Image example'),
+          title: Text('Row and Column Example'),
         ),
-        body: Center(
-            child: Container(
-          width: 100,
-          height: 100,
-          child: Image.asset('assets/images/logo.png'),
-        ))
-        //Center(
-        //child: Image.asset('assets/images/flutter.jpg'))
-        );
+        body: Container(
+          height: 300,
+          width: 300,
+          child:
+              // Row(
+              //   //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   //mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //   //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //   //mainAxisAlignment: MainAxisAlignment.center,
+              //   //mainAxisAlignment: MainAxisAlignment.end,
+              //   mainAxisAlignment: MainAxisAlignment.start, //default
+              //   crossAxisAlignment: CrossAxisAlignment.start,
+              //   children: [
+              //     Text(
+              //       'A',
+              //       style: TextStyle(fontSize: 25),
+              //     ),
+              //     Text(
+              //       'B',
+              //       style: TextStyle(fontSize: 25),
+              //     ),
+              //     Text(
+              //       'C',
+              //       style: TextStyle(fontSize: 25),
+              //     ),
+              //     ElevatedButton(
+              //       onPressed: () {},
+              //       child: Text('Click'),
+              //     )
+              //   ],
+              // ),
+
+              //   Column(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   //mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //   //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //   //mainAxisAlignment: MainAxisAlignment.center,
+              //   //mainAxisAlignment: MainAxisAlignment.end,
+              //   //mainAxisAlignment: MainAxisAlignment.start, //default
+              //   //crossAxisAlignment: CrossAxisAlignment.start,
+              //   crossAxisAlignment: CrossAxisAlignment.stretch,
+              //   children: [
+              //     Text(
+              //       'A',
+              //       style: TextStyle(fontSize: 25),
+              //     ),
+              //     Text(
+              //       'B',
+              //       style: TextStyle(fontSize: 25),
+              //     ),
+              //     Text(
+              //       'C',
+              //       style: TextStyle(fontSize: 25),
+              //     ),
+              //     ElevatedButton(
+              //       onPressed: () {},
+              //       child: Text('Click'),
+              //     )
+              //   ],
+              // ),
+
+              Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    'R1',
+                    style: TextStyle(fontSize: 25),
+                  ),
+                  Text(
+                    'R2',
+                    style: TextStyle(fontSize: 25),
+                  ),
+                  Column(
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text('Click'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text('Click'),
+                      ),
+                    ],
+                  ),
+                  Text(
+                    'R3',
+                    style: TextStyle(fontSize: 25),
+                  ),
+                ],
+              ),
+              Text(
+                'A',
+                style: TextStyle(fontSize: 25),
+              ),
+              Text(
+                'B',
+                style: TextStyle(fontSize: 25),
+              ),
+              Text(
+                'C',
+                style: TextStyle(fontSize: 25),
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('Click'),
+              )
+            ],
+          ),
+        ));
   }
 }
