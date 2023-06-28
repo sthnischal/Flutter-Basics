@@ -48,118 +48,43 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: Text('Row and Column Example'),
         ),
-        body: Container(
-          height: 300,
-          width: 300,
-          child:
-              // Row(
-              //   //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   //mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //   //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //   //mainAxisAlignment: MainAxisAlignment.center,
-              //   //mainAxisAlignment: MainAxisAlignment.end,
-              //   mainAxisAlignment: MainAxisAlignment.start, //default
-              //   crossAxisAlignment: CrossAxisAlignment.start,
-              //   children: [
-              //     Text(
-              //       'A',
-              //       style: TextStyle(fontSize: 25),
-              //     ),
-              //     Text(
-              //       'B',
-              //       style: TextStyle(fontSize: 25),
-              //     ),
-              //     Text(
-              //       'C',
-              //       style: TextStyle(fontSize: 25),
-              //     ),
-              //     ElevatedButton(
-              //       onPressed: () {},
-              //       child: Text('Click'),
-              //     )
-              //   ],
-              // ),
+        body:
+            // Container(
+            //   child: ElevatedButton(
+            //     child: Text('Click Me'),
+            //     onPressed: () {
+            //       print('Click on Button');
+            //     },
+            //   ),
+            // )
 
-              //   Column(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   //mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //   //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //   //mainAxisAlignment: MainAxisAlignment.center,
-              //   //mainAxisAlignment: MainAxisAlignment.end,
-              //   //mainAxisAlignment: MainAxisAlignment.start, //default
-              //   //crossAxisAlignment: CrossAxisAlignment.start,
-              //   crossAxisAlignment: CrossAxisAlignment.stretch,
-              //   children: [
-              //     Text(
-              //       'A',
-              //       style: TextStyle(fontSize: 25),
-              //     ),
-              //     Text(
-              //       'B',
-              //       style: TextStyle(fontSize: 25),
-              //     ),
-              //     Text(
-              //       'C',
-              //       style: TextStyle(fontSize: 25),
-              //     ),
-              //     ElevatedButton(
-              //       onPressed: () {},
-              //       child: Text('Click'),
-              //     )
-              //   ],
-              // ),
-
-              Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    'R1',
-                    style: TextStyle(fontSize: 25),
-                  ),
-                  Text(
-                    'R2',
-                    style: TextStyle(fontSize: 25),
-                  ),
-                  Column(
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Text('Click'),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Text('Click'),
-                      ),
-                    ],
-                  ),
-                  Text(
-                    'R3',
-                    style: TextStyle(fontSize: 25),
-                  ),
-                ],
-              ),
-              Text(
-                'A',
-                style: TextStyle(fontSize: 25),
-              ),
-              Text(
-                'B',
-                style: TextStyle(fontSize: 25),
-              ),
-              Text(
-                'C',
-                style: TextStyle(fontSize: 25),
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text('Click'),
-              )
-            ],
-          ),
-        ));
+            //Inkwell used for clickable into any widget
+            Center(
+                child: InkWell(
+                    onTap: () {
+                      print('Tapped on Container');
+                    },
+                    onLongPress: () {
+                      print('Long Pressed on Container');
+                    },
+                    onDoubleTap: () {
+                      print('Double Tapped on Container');
+                    },
+                    child: Container(
+                        width: 200,
+                        height: 200,
+                        color: Colors.amber,
+                        child: Center(
+                            child: InkWell(
+                                onTap: () {
+                                  print('Text Widget Tapped');
+                                },
+                                child: Text(
+                                  'Click Me',
+                                  style: TextStyle(
+                                    fontSize: 21,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                )))))));
   }
 }
