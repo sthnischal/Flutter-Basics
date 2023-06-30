@@ -43,95 +43,106 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var arrNames = ['Ram', 'Shyam', 'Hari', 'Gopal', 'Ramu', 'Sita', 'Gita'];
+
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text('ScrollView Example'),
+          title: Text('ListView Example'),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SingleChildScrollView(
-            child: Column(
+        body:
+            // ListView(
+            //   //scrollDirection: Axis.horizontal,
+            //   //reverse: true,
+            //   children: [
+            //     Padding(
+            //       padding: const EdgeInsets.all(8.0),
+            //       child: Text(
+            //         'One',
+            //         style: TextStyle(fontSize: 21, fontWeight: FontWeight.w500),
+            //       ),
+            //     ),
+            //     Padding(
+            //       padding: const EdgeInsets.all(8.0),
+            //       child: Text(
+            //         'Two',
+            //         style: TextStyle(fontSize: 21, fontWeight: FontWeight.w500),
+            //       ),
+            //     ),
+            //     Padding(
+            //       padding: const EdgeInsets.all(8.0),
+            //       child: Text(
+            //         'Three',
+            //         style: TextStyle(fontSize: 21, fontWeight: FontWeight.w500),
+            //       ),
+            //     ),
+            //     Padding(
+            //       padding: const EdgeInsets.all(8.0),
+            //       child: Text(
+            //         'Four',
+            //         style: TextStyle(fontSize: 21, fontWeight: FontWeight.w500),
+            //       ),
+            //     ),
+            //   ],
+            // ),
+
+            //   ListView.builder(
+            //   itemBuilder: (context, index) {
+            //     return Text(
+            //       arrNames[index],
+            //       style: TextStyle(fontSize: 21, fontWeight: FontWeight.w500),
+            //     );
+            //   },
+            //   itemCount: arrNames.length,
+            //   //reverse: true,
+            //   //itemExtent: 100,
+            //   //scrollDirection: Axis.horizontal,
+            // )
+
+            ListView.separated(
+          itemBuilder: (context, index) {
+            return Row(
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(right: 11),
-                          height: 200,
-                          width: 200,
-                          color: Colors.blueGrey,
+                  child: Column(
+                    children: [
+                      Text(
+                        arrNames[index],
+                        style: TextStyle(
+                            fontSize: 21, fontWeight: FontWeight.w500),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          arrNames[index],
+                          style: TextStyle(
+                              fontSize: 11, fontWeight: FontWeight.w500),
                         ),
-                        Container(
-                          margin: EdgeInsets.only(right: 11),
-                          height: 200,
-                          width: 200,
-                          color: Colors.lightGreen,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(right: 11),
-                          height: 200,
-                          width: 200,
-                          color: Colors.black,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(right: 11),
-                          height: 200,
-                          width: 200,
-                          color: Colors.red,
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 11),
-                  height: 200,
-                  //width: 200,
-                  color: Colors.lightBlue,
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 11),
-                  height: 200,
-                  //width: 200,
-                  color: Colors.yellowAccent,
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 11),
-                  height: 200,
-                  //width: 200,
-                  color: Colors.orange,
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 11),
-                  height: 200,
-                  //width: 200,
-                  color: Colors.lightGreen,
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 11),
-                  height: 200,
-                  //width: 200,
-                  color: Colors.lightBlue,
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 11),
-                  height: 200,
-                  //width: 200,
-                  color: Colors.yellowAccent,
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 11),
-                  height: 200,
-                  //width: 200,
-                  color: Colors.orange,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    arrNames[index],
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                  ),
                 )
               ],
-            ),
-          ),
+            );
+          },
+          itemCount: arrNames.length,
+          separatorBuilder: (context, index) {
+            return Divider(
+              height: 100,
+              thickness: 2,
+            );
+          },
+          //reverse: true,
+          //itemExtent: 100,
+          //scrollDirection: Axis.horizontal,
         ));
   }
 }
