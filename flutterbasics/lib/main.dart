@@ -19,73 +19,26 @@ class FlutterApp extends StatelessWidget {
 class DashBoardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('Hello'),
-        ),
-        body:
-            // Padding(
-            //   padding: const EdgeInsets.only(top: 11, left: 15),
-            //   //padding: const EdgeInsets.all(11),
-            //   child: Text(
-            //     'Hello World',
-            //     style: TextStyle(fontSize: 25),
-            //   ),
-            // )
+    var arrNames = ['Ram', 'Shyam', 'Hari', 'Gopal', 'Sita', 'Sita'];
 
-            Column(children: [
-          Row(
-            children: [
-              Container(
-                color: Colors.blueGrey,
-                margin: EdgeInsets.all(11),
-                child: Padding(
-                  padding: const EdgeInsets.all(11),
-                  child: Text(
-                    'Hello World 1,1',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                ),
-              ),
-              Container(
-                color: Colors.blueGrey,
-                margin: EdgeInsets.all(11),
-                child: Padding(
-                  padding: const EdgeInsets.all(11),
-                  child: Text(
-                    'Hello World 1,2',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Container(
-                color: Colors.blueGrey,
-                margin: EdgeInsets.all(11),
-                child: Padding(
-                  padding: const EdgeInsets.all(11),
-                  child: Text(
-                    'Hello World 2,1',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                ),
-              ),
-              Container(
-                color: Colors.blueGrey,
-                margin: EdgeInsets.all(11),
-                child: Padding(
-                  padding: const EdgeInsets.all(11),
-                  child: Text(
-                    'Hello World 2,2',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ]));
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Hello'),
+      ),
+      body: ListView.separated(
+        itemBuilder: (context, index) {
+          return ListTile(
+            leading: Text('${index + 1}'),
+            title: Text(arrNames[index]),
+            subtitle: Text('Number'),
+            trailing: Icon(Icons.add),
+          );
+        },
+        itemCount: arrNames.length,
+        separatorBuilder: (context, index) {
+          return Divider(height: 20, thickness: 2);
+        },
+      ),
+    );
   }
 }
