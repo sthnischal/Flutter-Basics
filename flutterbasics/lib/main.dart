@@ -21,83 +21,71 @@ class DashBoardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Dashboard'),
+          title: Text('Hello'),
         ),
         body:
-            //Row(
-            //   //mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [
-            //     Expanded(
-            //       flex: 2, //for ratio
-            //       child: Container(
-            //         width: 50,
-            //         height: 100,
-            //         color: Colors.blue,
-            //       ),
-            //     ),
-            //     Expanded(
-            //       flex: 4,
-            //       child: Container(
-            //         width: 50,
-            //         height: 100,
-            //         color: Colors.orange,
-            //       ),
-            //     ),
-            //     Expanded(
-            //       flex: 2,
-            //       child: Container(
-            //         width: 50,
-            //         height: 100,
-            //         color: Colors.blueGrey,
-            //       ),
-            //     ),
-            //     Expanded(
-            //       flex: 1,
-            //       child: Container(
-            //         width: 50,
-            //         height: 100,
-            //         color: Colors.green,
-            //       ),
-            //     )
-            //   ],
-            // ),
+            // Padding(
+            //   padding: const EdgeInsets.only(top: 11, left: 15),
+            //   //padding: const EdgeInsets.all(11),
+            //   child: Text(
+            //     'Hello World',
+            //     style: TextStyle(fontSize: 25),
+            //   ),
+            // )
 
-            Column(
-          //mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              flex: 2, //for ratio
-              child: Container(
-                //width: 50,
-                height: 100,
-                color: Colors.blue,
-              ),
-            ),
-            Expanded(
-              flex: 4,
-              child: Container(
-                //width: 50,
-                height: 100,
-                color: Colors.orange,
-              ),
-            ),
-            Expanded(
-              flex: 2,
-              child: Container(
-                //width: 50,
-                height: 100,
+            Column(children: [
+          Row(
+            children: [
+              Container(
                 color: Colors.blueGrey,
+                margin: EdgeInsets.all(11),
+                child: Padding(
+                  padding: const EdgeInsets.all(11),
+                  child: Text(
+                    'Hello World 1,1',
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                ),
               ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                //width: 50,
-                height: 100,
-                color: Colors.green,
+              Container(
+                color: Colors.blueGrey,
+                margin: EdgeInsets.all(11),
+                child: Padding(
+                  padding: const EdgeInsets.all(11),
+                  child: Text(
+                    'Hello World 1,2',
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                ),
               ),
-            )
-          ],
-        ));
+            ],
+          ),
+          Row(
+            children: [
+              Container(
+                color: Colors.blueGrey,
+                margin: EdgeInsets.all(11),
+                child: Padding(
+                  padding: const EdgeInsets.all(11),
+                  child: Text(
+                    'Hello World 2,1',
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                ),
+              ),
+              Container(
+                color: Colors.blueGrey,
+                margin: EdgeInsets.all(11),
+                child: Padding(
+                  padding: const EdgeInsets.all(11),
+                  child: Text(
+                    'Hello World 2,2',
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ]));
   }
 }
