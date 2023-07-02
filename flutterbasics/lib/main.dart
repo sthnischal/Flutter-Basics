@@ -26,30 +26,12 @@ class DashBoardScreen extends StatelessWidget {
         title: Text('Hello'),
       ),
       body: Center(
-        child: CircleAvatar(
-          child:
-              //Text(
-              //  'Hello',
-              //  style: TextStyle(color: Colors.black, fontSize: 25),
-              Container(
-            width: 60,
-            height: 60,
-            child: Column(
-              children: [
-                Container(
-                    width: 60,
-                    height: 40,
-                    child: Image.asset('assets/images/boy.png')),
-                Text("Name")
-              ],
-            ),
-          ),
-
-          //backgroundImage: AssetImage('assets/images/boy.png'),
-          backgroundColor: Colors.lightGreen,
-          //radius: 100,
-          //minRadius: 50,
-          maxRadius: 50,
+        child: Text(
+          'Hello World',
+          style: TextStyle(
+              fontFamily: 'SquarePeg', //using custom font SquarePeg
+              fontSize: 55,
+              fontWeight: FontWeight.w500),
         ),
       ),
     );
