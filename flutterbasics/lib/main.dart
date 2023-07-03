@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterbasics/ui_helper/util.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(FlutterApp());
@@ -39,7 +40,15 @@ class DashBoardScreen extends StatelessWidget {
               children: [
                 Text(
                   //'Current Time: ${time.year}',
-                  'Current Time: ${time.hour}:${time.minute}:${time.second}',
+                  //'Current Time: ${time.hour}:${time.minute}:${time.second}',
+                  //'Current Time: ${DateFormat('Hms').format(time)}',
+                  //'Current Time: ${DateFormat('jms').format(time)}',
+                  //'Current Time: ${DateFormat('QQQQ').format(time)}',
+                  //'Current Time: ${DateFormat('yMMMMEEEEd').format(time)}',
+                  //'Current Time: ${DateFormat('EEEE').format(time)}',
+                  //'Current Time: ${DateFormat('MMMM').format(time)}',
+
+                  'Current Time: ${DateFormat('yMMMMd').format(time)}', //use jms or Hms also
                   style: TextStyle(fontSize: 25),
                 ),
                 ElevatedButton(
