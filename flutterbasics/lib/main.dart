@@ -25,75 +25,33 @@ class DashBoardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var time = DateTime.now();
     return Scaffold(
         appBar: AppBar(
           title: Text('Hello'),
         ),
         body: Center(
-            child: Container(
-                width: 300,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextField(
-                      keyboardType: TextInputType.phone,
-                      //enabled: false,
-                      controller: emailText,
-                      decoration: InputDecoration(
-                          hintText: 'Enter Email Here',
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(11),
-                              borderSide: BorderSide(
-                                color: Colors.deepOrange,
-                                width: 2,
-                              )),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(11),
-                              borderSide: BorderSide(
-                                  color: Colors.blueAccent, width: 2)),
-                          disabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(11),
-                              borderSide:
-                                  BorderSide(color: Colors.black12, width: 2)),
-                          //suffixText: "Username Exist",
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              Icons.remove_red_eye,
-                              color: Colors.orange,
-                            ),
-                            onPressed: () {},
-                            // border: OutlineInputBorder(
-                            //     borderRadius: BorderRadius.circular(11),
-                            //     borderSide:
-                            //         BorderSide(color: Colors.deepOrange))
-                          ),
-                          prefixIcon: Icon(
-                            //Icons.email,
-                            Icons.phone,
-                            color: Colors.orange,
-                          )),
-                    ),
-                    Container(height: 11),
-                    TextField(
-                      controller: passText,
-                      obscureText: true, //hidden text
-                      obscuringCharacter: '*',
-                      decoration: InputDecoration(
-                          hintText: 'Enter Password Here',
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(11),
-                              borderSide:
-                                  BorderSide(color: Colors.deepOrange))),
-                    ),
-                    ElevatedButton(
-                        onPressed: () {
-                          String uEmail = emailText.text.toString();
-                          String uPass = passText.text;
-
-                          print('Email : $uEmail, Pass: $uPass');
-                        },
-                        child: Text('Login'))
-                  ],
-                ))));
+          child: Container(
+            width: 200,
+            height: 200,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  //'Current Time: ${time.year}',
+                  'Current Time: ${time.hour}:${time.minute}:${time.second}',
+                  style: TextStyle(fontSize: 25),
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      setState(() {});
+                    },
+                    child: Text('Current Time'))
+              ],
+            ),
+          ),
+        ));
   }
 }
+
+void setState(Null Function() param0) {}
