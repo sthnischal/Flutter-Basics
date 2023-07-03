@@ -32,35 +32,40 @@ class DashBoardScreen extends StatelessWidget {
           title: Text('Hello'),
         ),
         body: Center(
-          child: Container(
-            width: 200,
-            height: 200,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  //'Current Time: ${time.year}',
-                  //'Current Time: ${time.hour}:${time.minute}:${time.second}',
-                  //'Current Time: ${DateFormat('Hms').format(time)}',
-                  //'Current Time: ${DateFormat('jms').format(time)}',
-                  //'Current Time: ${DateFormat('QQQQ').format(time)}',
-                  //'Current Time: ${DateFormat('yMMMMEEEEd').format(time)}',
-                  //'Current Time: ${DateFormat('EEEE').format(time)}',
-                  //'Current Time: ${DateFormat('MMMM').format(time)}',
+          child: Column(
+            children: [
+              Text(
+                'Select Date',
+                style: TextStyle(fontSize: 25),
+              ),
+              ElevatedButton(
+                  onPressed: () async {
+                    DateTime? datePicked = await showDatePicker(
+                        context: context, // ? for if null value
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(2023),
+                        lastDate: DateTime(2025));
 
-                  'Current Time: ${DateFormat('yMMMMd').format(time)}', //use jms or Hms also
-                  style: TextStyle(fontSize: 25),
-                ),
-                ElevatedButton(
-                    onPressed: () {
-                      setState(() {});
-                    },
-                    child: Text('Current Time'))
-              ],
-            ),
+                    if (datePicked != null) {
+                      print(
+                          'Date Selected: ${datePicked.day}-${datePicked.month}-${datePicked.year}');
+                    }
+                  },
+                  child: Text('Show')),
+              ElevatedButton(
+                  onPressed: () async {
+                    TimeOfDay? pickedTime = await showTimePicker(
+                        context: context, initialTime: TimeOfDay.now());
+                    //initialEntryMode: TimePickerEntryMode.input);
+                    //initialEntryMode: TimePickerEntryMode.dial); //it is bydefault date picker
+                    if (pickedTime != null) {
+                      print(
+                          'Time Selected: ${pickedTime.hour}: ${pickedTime.minute}');
+                    }
+                  },
+                  child: Text('Select Time'))
+            ],
           ),
         ));
   }
 }
-
-void setState(Null Function() param0) {}
