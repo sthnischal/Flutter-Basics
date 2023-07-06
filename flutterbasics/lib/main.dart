@@ -26,38 +26,23 @@ class DashBoardScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text('Hello'),
         ),
-        body: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+        body: Container(
+          width: 300,
+          height: 200,
+          //width: double.infinity,
+          // height: double.infinity,
+          color: Colors.blueGrey,
+          child: Stack(
             children: [
-              Icon(
-                //Icons.add_business_rounded,
-                //Icons.play_arrow_rounded,
-                Icons.play_circle_outline,
-                size: 50,
-                color: Colors.deepOrange,
-              ),
-              SizedBox(
-                width: 11,
-              ),
-              FaIcon(
-                FontAwesomeIcons.amazon,
-                color: Colors.deepOrange,
-              ),
-              SizedBox(
-                width: 11,
-              ),
-              FaIcon(
-                FontAwesomeIcons.calendar,
-                color: Colors.deepOrange,
-              ),
-              SizedBox(
-                width: 11,
-              ),
-              FaIcon(
-                FontAwesomeIcons.googlePay,
-                size: 50,
-                color: Colors.deepOrange,
+              Positioned(
+                bottom: 41,
+                //right: 41,
+                left: 41,
+                child: Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.white,
+                ),
               )
             ],
           ),
