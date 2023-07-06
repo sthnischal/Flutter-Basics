@@ -25,47 +25,14 @@ class DashBoardScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text('Hello'),
         ),
-        body:
-            // Row(
-            //   children: [
-            //     Text(
-            //       'Hello ',
-            //       style: TextStyle(fontSize: 16, color: Colors.grey),
-            //     ),
-            //     Text(
-            //       'Flutter',
-            //       style: TextStyle(
-            //           fontSize: 34,
-            //           color: Colors.blue,
-            //           fontWeight: FontWeight.bold),
-            //     ),
-            //   ],
-            // )
-            RichText(
-          text: TextSpan(
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 21,
-              ),
-              children: <TextSpan>[
-                TextSpan(text: 'Hello '),
-                TextSpan(
-                    text: 'World!',
-                    style: TextStyle(
-                      fontSize: 34,
-                      color: Colors.blue,
-                      fontWeight: FontWeight.bold,
-                    )),
-                TextSpan(text: ' Welcome to '),
-                TextSpan(
-                    text: 'Flutter',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 34,
-                        color: Colors.deepOrange,
-                        fontStyle: FontStyle.italic,
-                        fontFamily: 'SquarePeg'))
-              ]),
+        body: Center(
+          child: Icon(
+            //Icons.add_business_rounded,
+            //Icons.play_arrow_rounded,
+            Icons.play_circle_outline,
+            size: 50,
+            color: Colors.deepOrange,
+          ),
         ));
   }
 }
