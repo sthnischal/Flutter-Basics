@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutterbasics/ui_helper/util.dart';
-import 'package:flutterbasics/widgets/rounded_btn.dart';
-import 'package:intl/intl.dart';
-import 'package:flutter/widgets.dart';
 
 void main() {
   runApp(FlutterApp());
@@ -25,51 +21,62 @@ class FlutterApp extends StatelessWidget {
 class DashBoardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var arrColors = [
-      Colors.red,
-      Colors.blue,
-      Colors.black,
-      Colors.green,
-      Colors.brown,
-      Colors.orange,
-      Colors.purpleAccent
-    ];
-
     return Scaffold(
         appBar: AppBar(
           title: Text('Hello'),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+        body: Container(
+          width: double.infinity,
+          height: double.infinity,
+          child: Wrap(
+            //direction: Axis.vertical,
+            direction: Axis.horizontal,
+            //alignment: WrapAlignment.center,
+            //alignment: WrapAlignment.spaceEvenly,
+            //alignment: WrapAlignment.spaceBetween,
+            alignment: WrapAlignment.spaceAround,
+            spacing: 11,
+            runSpacing: 11,
             children: [
               Container(
-                width: 150,
-                height: 50,
-                child: RoundedButton(
-                  btnName: 'Play',
-                  icon: Icon(Icons.play_arrow),
-                  callback: () {
-                    print('Logged in!!');
-                  },
-                  textStyle: mTextStyle16(),
-                ),
+                width: 70,
+                height: 70,
+                color: Colors.deepOrange,
               ),
               Container(
-                height: 11,
+                width: 70,
+                height: 70,
+                color: Colors.brown,
               ),
               Container(
-                width: 150,
-                height: 50,
-                child: RoundedButton(
-                  btnName: 'Press',
-                  // icon: Icon(Icons.play_arrow),
-                  callback: () {
-                    print('Playing');
-                  },
-                  bgColor: Colors.orange,
-                  textStyle: mTextStyle21(),
-                ),
+                width: 70,
+                height: 70,
+                color: Colors.blue,
+              ),
+              Container(
+                width: 70,
+                height: 70,
+                color: Colors.yellow,
+              ),
+              Container(
+                width: 70,
+                height: 70,
+                color: Colors.green,
+              ),
+              Container(
+                width: 70,
+                height: 70,
+                color: Colors.grey,
+              ),
+              Container(
+                width: 70,
+                height: 70,
+                color: Colors.red,
+              ),
+              Container(
+                width: 70,
+                height: 70,
+                color: Colors.pink,
               )
             ],
           ),
