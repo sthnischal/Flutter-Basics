@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutterbasics/ui_helper/util.dart';
+import 'package:flutterbasics/widgets/rounded_btn.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter/widgets.dart';
 
 void main() {
   runApp(FlutterApp());
@@ -37,28 +39,36 @@ class DashBoardScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text('Hello'),
         ),
-        body: Container(
-          width: 300,
-          height: 300,
-          child: Stack(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: 200,
-                height: 200,
-                color: Colors.blueGrey,
+                width: 150,
+                height: 50,
+                child: RoundedButton(
+                  btnName: 'Play',
+                  icon: Icon(Icons.play_arrow),
+                  callback: () {
+                    print('Logged in!!');
+                  },
+                  textStyle: mTextStyle16(),
+                ),
               ),
-              // Container(
-              //   width: 160,
-              //   height: 160,
-              //   color: Colors.grey,
-              // ),
-              Positioned(
-                left: 21,
-                top: 21,
-                child: Container(
-                  width: 200,
-                  height: 200,
-                  color: Colors.grey,
+              Container(
+                height: 11,
+              ),
+              Container(
+                width: 150,
+                height: 50,
+                child: RoundedButton(
+                  btnName: 'Press',
+                  // icon: Icon(Icons.play_arrow),
+                  callback: () {
+                    print('Playing');
+                  },
+                  bgColor: Colors.orange,
+                  textStyle: mTextStyle21(),
                 ),
               )
             ],
