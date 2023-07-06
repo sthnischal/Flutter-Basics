@@ -25,61 +25,55 @@ class DashBoardScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text('Hello'),
         ),
-        body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          child: Wrap(
-            //direction: Axis.vertical,
-            direction: Axis.horizontal,
-            //alignment: WrapAlignment.center,
-            //alignment: WrapAlignment.spaceEvenly,
-            //alignment: WrapAlignment.spaceBetween,
-            alignment: WrapAlignment.spaceAround,
-            spacing: 11,
-            runSpacing: 11,
-            children: [
-              Container(
-                width: 70,
-                height: 70,
-                color: Colors.deepOrange,
+        body: Wrap(
+          direction: Axis.vertical,
+          children: [
+            //SizedBox.expand(
+            SizedBox.square(
+              dimension: 100,
+              //child: SizedBox.shrink(
+              //width: 200,
+              //height: 35,
+              child: ElevatedButton(
+                onPressed: () {
+                  print('Button Click');
+                },
+                child: Text('Click'),
               ),
-              Container(
-                width: 70,
-                height: 70,
-                color: Colors.brown,
+            ),
+            SizedBox(
+              //width: 20,
+              height: 20,
+            ),
+            SizedBox.square(
+              dimension: 75,
+              //child: SizedBox.shrink(
+              //width: 200,
+              //height: 35,
+              child: ElevatedButton(
+                onPressed: () {
+                  print('Button Click');
+                },
+                child: Text('Click'),
               ),
-              Container(
-                width: 70,
-                height: 70,
-                color: Colors.blue,
+            ),
+            SizedBox(
+              //width: 50,
+              height: 50,
+            ),
+            SizedBox.square(
+              dimension: 100,
+              //child: SizedBox.shrink(
+              //width: 200,
+              //height: 35,
+              child: ElevatedButton(
+                onPressed: () {
+                  print('Button Click');
+                },
+                child: Text('Click'),
               ),
-              Container(
-                width: 70,
-                height: 70,
-                color: Colors.yellow,
-              ),
-              Container(
-                width: 70,
-                height: 70,
-                color: Colors.green,
-              ),
-              Container(
-                width: 70,
-                height: 70,
-                color: Colors.grey,
-              ),
-              Container(
-                width: 70,
-                height: 70,
-                color: Colors.red,
-              ),
-              Container(
-                width: 70,
-                height: 70,
-                color: Colors.pink,
-              )
-            ],
-          ),
+            ),
+          ],
         ));
   }
 }
