@@ -25,55 +25,47 @@ class DashBoardScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text('Hello'),
         ),
-        body: Wrap(
-          direction: Axis.vertical,
-          children: [
-            //SizedBox.expand(
-            SizedBox.square(
-              dimension: 100,
-              //child: SizedBox.shrink(
-              //width: 200,
-              //height: 35,
-              child: ElevatedButton(
-                onPressed: () {
-                  print('Button Click');
-                },
-                child: Text('Click'),
+        body:
+            // Row(
+            //   children: [
+            //     Text(
+            //       'Hello ',
+            //       style: TextStyle(fontSize: 16, color: Colors.grey),
+            //     ),
+            //     Text(
+            //       'Flutter',
+            //       style: TextStyle(
+            //           fontSize: 34,
+            //           color: Colors.blue,
+            //           fontWeight: FontWeight.bold),
+            //     ),
+            //   ],
+            // )
+            RichText(
+          text: TextSpan(
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 21,
               ),
-            ),
-            SizedBox(
-              //width: 20,
-              height: 20,
-            ),
-            SizedBox.square(
-              dimension: 75,
-              //child: SizedBox.shrink(
-              //width: 200,
-              //height: 35,
-              child: ElevatedButton(
-                onPressed: () {
-                  print('Button Click');
-                },
-                child: Text('Click'),
-              ),
-            ),
-            SizedBox(
-              //width: 50,
-              height: 50,
-            ),
-            SizedBox.square(
-              dimension: 100,
-              //child: SizedBox.shrink(
-              //width: 200,
-              //height: 35,
-              child: ElevatedButton(
-                onPressed: () {
-                  print('Button Click');
-                },
-                child: Text('Click'),
-              ),
-            ),
-          ],
+              children: <TextSpan>[
+                TextSpan(text: 'Hello '),
+                TextSpan(
+                    text: 'World!',
+                    style: TextStyle(
+                      fontSize: 34,
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold,
+                    )),
+                TextSpan(text: ' Welcome to '),
+                TextSpan(
+                    text: 'Flutter',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 34,
+                        color: Colors.deepOrange,
+                        fontStyle: FontStyle.italic,
+                        fontFamily: 'SquarePeg'))
+              ]),
         ));
   }
 }
