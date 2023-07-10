@@ -19,33 +19,43 @@ class FlutterApp extends StatelessWidget {
   }
 }
 
-class DashBoardScreen extends StatelessWidget {
+class DashBoardScreen extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() =>
+      DashBoardState(); // for single line return
+  // for multiple type return keyword also
+}
+
+class DashBoardState extends State<DashBoardScreen> {
+  var count = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Hello'),
-        ),
-        body: Container(
-          width: 300,
-          height: 200,
-          //width: double.infinity,
-          // height: double.infinity,
-          color: Colors.blueGrey,
-          child: Stack(
-            children: [
-              Positioned(
-                bottom: 41,
-                //right: 41,
-                left: 41,
-                child: Container(
-                  width: 100,
-                  height: 100,
-                  color: Colors.white,
-                ),
-              )
-            ],
+      appBar: AppBar(
+        title: Text('Stateful'),
+      ),
+      body: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'Count : $count',
+            style: TextStyle(fontSize: 34),
           ),
-        ));
+          ElevatedButton(
+              onPressed: () {
+                //count++;
+                //count = count +1;
+                //count +=1;
+
+                setState(() {
+                  count++;
+                  print(count);
+                });
+              },
+              child: Text('Incremt Count'))
+        ],
+      )),
+    );
   }
 }
