@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutterbasics/SplashScreen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'IntroPage.dart';
@@ -18,7 +19,7 @@ class FlutterApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: IntroPage(),
+      home: SplashScreen(),
     );
   }
 }
