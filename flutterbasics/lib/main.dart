@@ -19,19 +19,43 @@ class FlutterApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: SplashScreen(),
+      //home: SplashScreen(),
+      home: MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  RangeValues values = RangeValues(0, 100);
+
   @override
   Widget build(BuildContext context) {
+    RangeLabels labels =
+        RangeLabels(values.start.toString(), values.end.toString());
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Switch Pages'),
-      ),
-      body: Text('Hello World', style: TextStyle(color: Colors.blue)),
-    );
+        appBar: AppBar(
+          title: Text('Range Example'),
+        ),
+        body: Center(
+          child: RangeSlider(
+              values: values,
+              labels: labels,
+              divisions: 10,
+              activeColor: Colors.blue,
+              inactiveColor: Colors.green.shade100,
+              //if max value need to change into 100 otherwise bydefault it is 1.0
+              min: 0,
+              max: 100,
+              onChanged: (newValue) {
+                values = newValue;
+                print('${newValue.start}, ${newValue.end}');
+                setState(() {});
+              }),
+        ));
   }
 }
