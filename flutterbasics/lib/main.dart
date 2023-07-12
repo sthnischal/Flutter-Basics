@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -27,44 +29,72 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var myOpacity = 1.0;
-  bool isVisible = true;
+  bool isFirst = true;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    //it is not used for button click
+    // Timer(Duration(seconds: 4), () {
+    //   reload();
+    // });
+  }
+
+  void reload() {
+    setState(() {
+      //isFirst = false;
+
+      if (isFirst) {
+        isFirst = false;
+      } else {
+        isFirst = true;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Animation Opacity Example'),
+          title: Text('Animation Cross Fade Widget Example'),
         ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AnimatedOpacity(
-                opacity: myOpacity,
+              AnimatedCrossFade(
                 duration: Duration(seconds: 2),
-                //curve: Curves.slowMiddle,
-                //curve: Curves.elasticIn,
-                curve: Curves.bounceIn,
-                child: Container(
+                firstChild: Container(
                   width: 200,
-                  height: 100,
-                  color: Colors.blue,
+                  height: 200,
+                  color: Colors.grey.shade400,
                 ),
+                secondChild: Image.asset(
+                  'assets/images/boy.png',
+                  width: 200,
+                  height: 200,
+                  //width: 100,
+                  //height: 100,
+                ),
+
+                // if size of two child is different
+                //sizeCurve: Curves.fastOutSlowIn,
+
+                //if size are same
+                firstCurve: Curves.easeInOut,
+                secondCurve: Curves.bounceInOut,
+                //crossFadeState: CrossFadeState.showSecond,
+                crossFadeState: isFirst
+                    ? CrossFadeState.showFirst
+                    : CrossFadeState.showSecond,
               ),
               ElevatedButton(
                   onPressed: () {
-                    setState(() {
-                      //toggling with button
-                      if (isVisible) {
-                        myOpacity = 0.0; //invisible
-                        isVisible = false;
-                      } else {
-                        myOpacity = 1.0; //visible
-                        isVisible = true;
-                      }
-                    });
+                    reload();
                   },
-                  child: Text('Animate'))
+                  child: Text('Show'))
             ],
           ),
         ));
