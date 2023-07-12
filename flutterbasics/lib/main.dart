@@ -1,25 +1,21 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutterbasics/SplashScreen.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import 'IntroPage.dart';
 
 void main() {
-  runApp(FlutterApp());
+  runApp(const MyApp());
 }
 
-class FlutterApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "FlutterApp",
+      title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blue,
       ),
-      //home: SplashScreen(),
       home: MyHomePage(),
     );
   }
@@ -31,31 +27,70 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  RangeValues values = RangeValues(0, 100);
+  var _width = 200.0;
+
+  var _height = 100.0;
+
+  bool flag = true;
+
+  //Color bgColor = Colors.blueGrey;
+
+  Decoration myDecor = BoxDecoration(
+      borderRadius: BorderRadius.circular(2), color: Colors.blueGrey);
 
   @override
   Widget build(BuildContext context) {
-    RangeLabels labels =
-        RangeLabels(values.start.toString(), values.end.toString());
     return Scaffold(
         appBar: AppBar(
-          title: Text('Range Example'),
+          title: Text('Animation Example'),
         ),
         body: Center(
-          child: RangeSlider(
-              values: values,
-              labels: labels,
-              divisions: 10,
-              activeColor: Colors.blue,
-              inactiveColor: Colors.green.shade100,
-              //if max value need to change into 100 otherwise bydefault it is 1.0
-              min: 0,
-              max: 100,
-              onChanged: (newValue) {
-                values = newValue;
-                print('${newValue.start}, ${newValue.end}');
-                setState(() {});
-              }),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AnimatedContainer(
+                width: _width,
+                height: _height,
+                // color: bgColor,
+                //curve: Curves.fastOutSlowIn,
+                //curve: Curves.slowMiddle,
+                //curve: Curves.bounceIn,
+                //curve: Curves.bounceInOut,
+                curve: Curves.bounceOut,
+                decoration: myDecor,
+                duration: Duration(seconds: 2),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    //for changes toggling
+                    if (flag) {
+                      _width = 100.0;
+                      _height = 200.0;
+                      //  bgColor = Colors.orange;
+
+                      myDecor = BoxDecoration(
+                        borderRadius: BorderRadius.circular(21),
+                        color: Colors.orange,
+                      );
+                      //for flag value change to original
+                      flag = false;
+                    } else {
+                      _width = 200.0;
+                      _height = 100.0;
+                      //bgColor = Colors.blueGrey;
+                      myDecor = BoxDecoration(
+                        borderRadius: BorderRadius.circular(2),
+                        color: Colors.blueGrey,
+                      );
+                      flag = true;
+                    }
+                  });
+                },
+                child: Text('Animate'),
+              )
+            ],
+          ),
         ));
   }
 }
