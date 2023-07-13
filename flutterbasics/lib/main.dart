@@ -25,28 +25,60 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  var arrIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Hero Animation Example'),
+          title: Text('3D List'),
         ),
-        body: Container(
-          child: Center(
-            child: InkWell(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DetailPage()));
-              },
-              child: Hero(
-                tag: 'background',
-                child: Image.asset(
-                  'assets/images/mountain.jpg',
-                  width: 400,
-                  height: 200,
-                ),
-              ),
-            ),
+        body: Center(
+          child: ListWheelScrollView(
+            itemExtent: 200,
+            children: arrIndex
+                .map((value) => Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        child: Center(
+                          child: Text(
+                            '$value',
+                            style: TextStyle(
+                                fontSize: 21, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        decoration: BoxDecoration(
+                            color: Colors.blue,
+                            borderRadius: BorderRadius.circular(21)),
+                        //color: Colors.blue,
+
+                        width: double.infinity,
+                      ),
+                    ))
+                .toList(),
+            //[
+            // Container(
+            //   width: 200,
+            //   color: Colors.blue,
+            // ),
+            // Container(
+            //   width: 200,
+            //   color: Colors.blue,
+            // ),
+            // Container(
+            //   width: 200,
+            //   color: Colors.blue,
+            // ),
+            // Container(
+            //   width: 200,
+            //   color: Colors.blue,
+            // ),
+            // Container(
+            //   width: 200,
+            //   color: Colors.blue,
+            // ),
+
+            //],
+            //itemExtent: 100,
           ),
         ));
   }
