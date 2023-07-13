@@ -25,60 +25,31 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  var arrIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('3D List'),
+          title: Text('Clip RRECT'),
         ),
         body: Center(
-          child: ListWheelScrollView(
-            itemExtent: 200,
-            children: arrIndex
-                .map((value) => Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        child: Center(
-                          child: Text(
-                            '$value',
-                            style: TextStyle(
-                                fontSize: 21, fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        decoration: BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.circular(21)),
-                        //color: Colors.blue,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(21),
+            //borderRadius: BorderRadius.all(Radius.elliptical(21, 71)),
+            //borderRadius: BorderRadius.only(
+            //    topLeft: Radius.circular(21), bottomRight: Radius.circular(21)),
 
-                        width: double.infinity,
-                      ),
-                    ))
-                .toList(),
-            //[
-            // Container(
-            //   width: 200,
-            //   color: Colors.blue,
-            // ),
-            // Container(
-            //   width: 200,
-            //   color: Colors.blue,
-            // ),
-            // Container(
-            //   width: 200,
-            //   color: Colors.blue,
-            // ),
-            // Container(
-            //   width: 200,
-            //   color: Colors.blue,
-            // ),
-            // Container(
-            //   width: 200,
-            //   color: Colors.blue,
-            // ),
-
-            //],
-            //itemExtent: 100,
+            child:
+                // Container(
+                //   color: Colors.grey,
+                //   width: 200,
+                //   height: 200,
+                // ),
+                Image.asset(
+              'assets/images/mountain.jpg',
+              width: 300,
+              height: 200,
+              fit: BoxFit.fill,
+            ),
           ),
         ));
   }
