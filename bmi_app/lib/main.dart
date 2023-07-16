@@ -42,7 +42,31 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text('BMI'),
         ),
         body: Container(
-          color: bgColor,
+          //color: bgColor,
+          decoration: BoxDecoration(
+              //gradient:
+              // LinearGradient(
+              //     colors: [
+              //       // Colors.blue.shade100,
+              //       //Colors.blue.shade200,
+              //       //Colors.blue.shade300,
+
+              //       //use hex code from webgradients.com
+              //       Color(0xffffecd2), Color(0xfffcb69f), Color(0xffff9b7e)
+              //     ],
+              //     //begin: FractionalOffset(1.0, 0.0),
+              //     //end: FractionalOffset(0.0, 1.0)
+              //     begin: FractionalOffset(1.0, 0.5),
+              //     end: FractionalOffset(0.0, 0.5),
+              //     // stops: [1.0, 1.0]
+              //     //manua;;y giving size of gradient color
+              //    stops: [0.0, 0.4, 1.0])
+              gradient: RadialGradient(
+            colors: [Color(0xffffecd2), Color(0xfffcb69f), Color(0xffff9b7e)],
+            //center: Alignment.topLeft,
+            center: Alignment.bottomCenter,
+          )),
+
           child: Center(
             child: Container(
               width: 300,
