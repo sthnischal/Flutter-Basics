@@ -24,32 +24,56 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
+  late Animation animation; //animation variable
+  late AnimationController animationController; //animation controller
+
+  late Animation colorAnimation;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    animationController = AnimationController(
+        vsync: this,
+        duration: Duration(
+          seconds: 5,
+        ));
+    animation = Tween(begin: 200.0, end: 0.0).animate(animationController);
+    colorAnimation = ColorTween(begin: Colors.blue, end: Colors.orange)
+        .animate(animationController);
+
+    animationController.addListener(() {
+      print(animation.value);
+      setState(() {});
+    });
+
+    //start animation controller
+    animationController.forward();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Clip RRECT'),
+          title: Text('Tween'),
         ),
         body: Center(
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(21),
-            //borderRadius: BorderRadius.all(Radius.elliptical(21, 71)),
-            //borderRadius: BorderRadius.only(
-            //    topLeft: Radius.circular(21), bottomRight: Radius.circular(21)),
+          child: Container(
+            //width: 200,
+            //height: 200,
+            width: animation.value,
+            height: animation.value,
 
-            child:
-                // Container(
-                //   color: Colors.grey,
-                //   width: 200,
-                //   height: 200,
-                // ),
-                Image.asset(
-              'assets/images/mountain.jpg',
-              width: 300,
-              height: 200,
-              fit: BoxFit.fill,
-            ),
+            //color: Colors.blue,
+            color: colorAnimation.value,
           ),
         ));
   }
