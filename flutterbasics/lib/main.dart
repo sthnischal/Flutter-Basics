@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage>
     animationController = AnimationController(
         vsync: this,
         duration: Duration(
-          seconds: 5,
+          seconds: 10,
         ));
     animation = Tween(begin: 200.0, end: 0.0).animate(animationController);
     colorAnimation = ColorTween(begin: Colors.blue, end: Colors.orange)
