@@ -31,50 +31,73 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
-  late Animation animation; //animation variable
-  late AnimationController animationController; //animation controller
+  late Animation _animation;
+  late AnimationController
+      _animationController; //_ is used for making private variable
 
-  late Animation colorAnimation;
+  var listRadius = [150.0, 200.0, 250.0, 300.0, 350.0];
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
-    animationController = AnimationController(
-        vsync: this,
-        duration: Duration(
-          seconds: 10,
-        ));
-    animation = Tween(begin: 200.0, end: 0.0).animate(animationController);
-    colorAnimation = ColorTween(begin: Colors.blue, end: Colors.orange)
-        .animate(animationController);
+    _animationController = AnimationController(
+        vsync: this, duration: Duration(seconds: 4), lowerBound: 0.5);
+    //_animation = Tween(begin: 0.0, end: 1.0).animate(_animationController);
 
-    animationController.addListener(() {
-      print(animation.value);
+    _animationController.addListener(() {
       setState(() {});
     });
 
-    //start animation controller
-    animationController.forward();
+    _animationController
+        .forward(); //if animation after button click then add this line on onpressed action
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Tween'),
+          title: Text('Ripple'),
         ),
         body: Center(
-          child: Container(
-            //width: 200,
-            //height: 200,
-            width: animation.value,
-            height: animation.value,
+            child: Stack(alignment: Alignment.center, children: [
+          buildMyContainer(listRadius[0]),
+          buildMyContainer(listRadius[1]),
+          buildMyContainer(listRadius[2]),
+          buildMyContainer(listRadius[3]),
+          buildMyContainer(listRadius[4]),
+          Icon(
+            Icons.add_call,
+            color: Colors.blue,
+            size: 34,
+          )
+        ]
+                // listRadius.map((radius) => Container(
+                //           //width: radius * _animation.value,
+                //           //height: radius * _animation.value,
+                //           width: radius * _animationController.value,
+                //           height: radius * _animationController.value,
+                //           decoration: BoxDecoration(
+                //               shape: BoxShape.circle,
+                //               //color: Colors.blue.withOpacity(1.0 - _animation.value)),
+                //               color: Colors.blue
+                //                   .withOpacity(1.0 - _animationController.value)),
+                //         ))
+                //     .toList(),
+                )));
+  }
 
-            //color: Colors.blue,
-            color: colorAnimation.value,
-          ),
-        ));
+  Widget buildMyContainer(radius) {
+    return Container(
+      //width: radius * _animation.value,
+      //height: radius * _animation.value,
+      width: radius * _animationController.value,
+      height: radius * _animationController.value,
+      decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          //color: Colors.blue.withOpacity(1.0 - _animation.value)),
+          color: Colors.blue.withOpacity(1.0 - _animationController.value)),
+    );
   }
 }
