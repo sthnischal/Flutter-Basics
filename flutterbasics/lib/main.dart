@@ -24,80 +24,58 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage>
-    with SingleTickerProviderStateMixin {
-  late Animation _animation;
-  late AnimationController
-      _animationController; //_ is used for making private variable
-
-  var listRadius = [150.0, 200.0, 250.0, 300.0, 350.0];
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-
-    _animationController = AnimationController(
-        vsync: this, duration: Duration(seconds: 4), lowerBound: 0.5);
-    //_animation = Tween(begin: 0.0, end: 1.0).animate(_animationController);
-
-    _animationController.addListener(() {
-      setState(() {});
-    });
-
-    _animationController
-        .forward(); //if animation after button click then add this line on onpressed action
-  }
-
+class MyHomePage extends StatelessWidget {
+  var arrData = [
+    //'Ram', 'Shyam', 'Hari', 'Gopal', 'Sita',
+    {'name': 'Ram', 'mobno': '123456789', 'unread': '2'},
+    {'name': 'shyam', 'mobno': '987654321', 'unread': '1'},
+    {'name': 'Hari', 'mobno': '543216798', 'unread': '2'},
+    {'name': 'Gopal', 'mobno': '765894321', 'unread': '4'},
+    {'name': 'Sita', 'mobno': '098712344', 'unread': '6'},
+    {'name': 'Gita', 'mobno': '1239876345', 'unread': '0'},
+    {'name': 'Ram', 'mobno': '123456789', 'unread': '2'},
+    {'name': 'shyam', 'mobno': '987654321', 'unread': '1'},
+    {'name': 'Hari', 'mobno': '543216798', 'unread': '2'},
+    {'name': 'Gopal', 'mobno': '765894321', 'unread': '4'},
+    {'name': 'Sita', 'mobno': '098712344', 'unread': '6'},
+    {'name': 'Gita', 'mobno': '1239876345', 'unread': '0'},
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Ripple'),
+          title: Text('Mapping List Data'),
         ),
-        body: Center(
-            child: Stack(alignment: Alignment.center, children: [
-          buildMyContainer(listRadius[0]),
-          buildMyContainer(listRadius[1]),
-          buildMyContainer(listRadius[2]),
-          buildMyContainer(listRadius[3]),
-          buildMyContainer(listRadius[4]),
-          Icon(
-            Icons.add_call,
-            color: Colors.blue,
-            size: 34,
-          )
-        ]
-                // listRadius.map((radius) => Container(
-                //           //width: radius * _animation.value,
-                //           //height: radius * _animation.value,
-                //           width: radius * _animationController.value,
-                //           height: radius * _animationController.value,
-                //           decoration: BoxDecoration(
-                //               shape: BoxShape.circle,
-                //               //color: Colors.blue.withOpacity(1.0 - _animation.value)),
-                //               color: Colors.blue
-                //                   .withOpacity(1.0 - _animationController.value)),
-                //         ))
-                //     .toList(),
-                )));
-  }
+        body: Container(
+          child: ListView(
+              children: arrData.map((value) {
+            return ListTile(
+              leading: Icon(Icons.account_circle),
+              title: Text(value['name'].toString()),
+              subtitle: Text(value['mobno'].toString()),
+              trailing: CircleAvatar(
+                  radius: 12,
+                  backgroundColor: Colors.green,
+                  child: Text(value['unread'].toString())),
+            );
 
-  Widget buildMyContainer(radius) {
-    return Container(
-      //width: radius * _animation.value,
-      //height: radius * _animation.value,
-      width: radius * _animationController.value,
-      height: radius * _animationController.value,
-      decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          //color: Colors.blue.withOpacity(1.0 - _animation.value)),
-          color: Colors.blue.withOpacity(1.0 - _animationController.value)),
-    );
+            // return Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: Padding(
+            //     padding: const EdgeInsets.all(8.0),
+            //     child: Container(
+            //       decoration: BoxDecoration(
+            //         borderRadius: BorderRadius.circular(21),
+            //         color: Colors.blue.shade100,
+            //       ),
+            //       child: Padding(
+            //         padding: const EdgeInsets.all(8.0),
+            //         child: Center(child: Text(value)),
+            //       ),
+            //     ),
+            //   ),
+            // );
+          }).toList()),
+        ));
   }
 }
