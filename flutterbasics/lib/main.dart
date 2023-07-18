@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutterbasics/detail_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,58 +25,74 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  var arrData = [
-    //'Ram', 'Shyam', 'Hari', 'Gopal', 'Sita',
-    {'name': 'Ram', 'mobno': '123456789', 'unread': '2'},
-    {'name': 'shyam', 'mobno': '987654321', 'unread': '1'},
-    {'name': 'Hari', 'mobno': '543216798', 'unread': '2'},
-    {'name': 'Gopal', 'mobno': '765894321', 'unread': '4'},
-    {'name': 'Sita', 'mobno': '098712344', 'unread': '6'},
-    {'name': 'Gita', 'mobno': '1239876345', 'unread': '0'},
-    {'name': 'Ram', 'mobno': '123456789', 'unread': '2'},
-    {'name': 'shyam', 'mobno': '987654321', 'unread': '1'},
-    {'name': 'Hari', 'mobno': '543216798', 'unread': '2'},
-    {'name': 'Gopal', 'mobno': '765894321', 'unread': '4'},
-    {'name': 'Sita', 'mobno': '098712344', 'unread': '6'},
-    {'name': 'Gita', 'mobno': '1239876345', 'unread': '0'},
-  ];
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  var nameController = TextEditingController();
+  static const String KEYNAME = 'name';
+  var nameValue = 'No Value Saved';
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getValue();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Mapping List Data'),
+          title: Text('Shared Pref'),
         ),
         body: Container(
-          child: ListView(
-              children: arrData.map((value) {
-            return ListTile(
-              leading: Icon(Icons.account_circle),
-              title: Text(value['name'].toString()),
-              subtitle: Text(value['mobno'].toString()),
-              trailing: CircleAvatar(
-                  radius: 12,
-                  backgroundColor: Colors.green,
-                  child: Text(value['unread'].toString())),
-            );
+          child: Center(
+            child: SizedBox(
+              width: 200,
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextField(
+                      controller: nameController,
+                      decoration: InputDecoration(
+                          label: Text('Name'),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(21),
+                          )),
+                    ),
+                    SizedBox(
+                      height: 11,
+                    ),
+                    ElevatedButton(
+                        onPressed: () async {
+                          var name = nameController.text.toString();
+                          var prefs = await SharedPreferences.getInstance();
 
-            // return Padding(
-            //   padding: const EdgeInsets.all(8.0),
-            //   child: Padding(
-            //     padding: const EdgeInsets.all(8.0),
-            //     child: Container(
-            //       decoration: BoxDecoration(
-            //         borderRadius: BorderRadius.circular(21),
-            //         color: Colors.blue.shade100,
-            //       ),
-            //       child: Padding(
-            //         padding: const EdgeInsets.all(8.0),
-            //         child: Center(child: Text(value)),
-            //       ),
-            //     ),
-            //   ),
-            // );
-          }).toList()),
+                          //prefs.setString('name', name);
+                          prefs.setString(KEYNAME, name);
+                          // if direct calling of controller
+                          //prefs.setString('name', nameController.toString());
+                        },
+                        child: Text('Save')),
+                    SizedBox(
+                      height: 11,
+                    ),
+                    Text(nameValue),
+                  ]),
+            ),
+          ),
         ));
+  }
+
+  void getValue() async {
+    var prefs = await SharedPreferences.getInstance();
+    var getName = prefs.getString('KEYNAME');
+    //nameValue = getName!;
+    //nameValue = getName !=null ? getName:'No Value Saved' ;
+    nameValue = getName ?? 'No Value Saved';
+    setState(() {});
   }
 }
