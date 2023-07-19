@@ -1,20 +1,23 @@
-import 'login_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Page'),
+        title: const Text('Home Page'),
       ),
-      body: Center(
-        child: Container(
-            child: Icon(
-          Icons.home,
-          color: Colors.blue.shade100,
-          size: 21,
-        )),
+      body: Container(
+        color: Colors.blue.shade100,
+        child: Center(
+          child: Icon(
+            Icons.home,
+            color: Colors.blue,
+            size: 55,
+          ),
+        ),
       ),
     );
   }

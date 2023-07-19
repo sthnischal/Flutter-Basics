@@ -16,8 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Login',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
@@ -26,6 +25,8 @@ class MyApp extends StatelessWidget {
 }
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
   State<SplashScreen> createState() => _SplashScreen();
 }
@@ -36,8 +37,8 @@ class _SplashScreen extends State<SplashScreen> {
     // TODO: implement initState
     super.initState();
 
-    Timer(Duration(seconds: 2), () {
-      Navigator.push(
+    Timer(const Duration(seconds: 2), () {
+      Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) => LoginPage(),
@@ -52,7 +53,7 @@ class _SplashScreen extends State<SplashScreen> {
           color: Colors.blue,
           child: Center(
             child: Container(
-                child: Icon(
+                child: const Icon(
               Icons.account_circle,
               color: Colors.white,
               size: 60,
