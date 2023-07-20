@@ -71,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                 sharedPref.setBool(SplashPage.KEYLOGIN, true);
 
                 if (un != '' && pa != '') {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                         builder: (context) => const HomePage(),
