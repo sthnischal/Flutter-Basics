@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:loginapp/main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -60,9 +62,13 @@ class _LoginPageState extends State<LoginPage> {
               height: 11,
             ),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 var un = unameController.text.toString();
                 var pa = passController.text.toString();
+
+                //if successful logged in
+                var sharedPref = await SharedPreferences.getInstance();
+                sharedPref.setBool(SplashPage.KEYLOGIN, true);
 
                 if (un != '' && pa != '') {
                   Navigator.push(
