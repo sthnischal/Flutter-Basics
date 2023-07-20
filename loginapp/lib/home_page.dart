@@ -23,13 +23,14 @@ class HomePage extends StatelessWidget {
               ),
               ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacement(
+                    Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => LoginPage(),
                         ));
                   },
-                  child: Text('Log Out'))
+                  child: Text('Log Out')),
+              Text('Tutorial is complete and need to work on UI design'),
             ],
           ),
         ),
