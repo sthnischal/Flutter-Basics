@@ -8,8 +8,29 @@ class Home extends StatelessWidget {
       backgroundColor: tdBGColor,
       appBar: _buildAppbar(),
       // drawer: Drawer(backgroundColor: tdBGColor),
-      body: Container(
-        child: Text('This is home screen.'),
+      body: Column(
+        children: [
+          SizedBox(
+            height: 11,
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(20)),
+            child: TextField(
+              decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(0),
+                  prefixIcon: Icon(
+                    Icons.search,
+                    color: tdBlack,
+                    size: 20,
+                  ),
+                  label: const Text('Search'),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20))),
+            ),
+          )
+        ],
       ),
     );
   }
