@@ -8,29 +8,37 @@ class Home extends StatelessWidget {
       backgroundColor: tdBGColor,
       appBar: _buildAppbar(),
       // drawer: Drawer(backgroundColor: tdBGColor),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 11,
+      body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        child: Column(
+          children: [searchBox()],
+        ),
+      ),
+    );
+  }
+
+  Widget searchBox() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 15),
+      decoration: BoxDecoration(
+          color: Colors.white, borderRadius: BorderRadius.circular(20)),
+      child: TextField(
+        decoration: InputDecoration(
+          contentPadding: EdgeInsets.all(0),
+          prefixIcon: Icon(
+            Icons.search,
+            color: tdBlack,
+            size: 20,
           ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(20)),
-            child: TextField(
-              decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(0),
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: tdBlack,
-                    size: 20,
-                  ),
-                  label: const Text('Search'),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20))),
-            ),
-          )
-        ],
+          prefixIconConstraints: BoxConstraints(maxHeight: 20, minWidth: 25),
+          border: InputBorder.none,
+          hintText: 'Serch',
+          hintStyle: TextStyle(color: tdGrey),
+
+          // label: const Text('Search'),
+          // border:
+          //     OutlineInputBorder(borderRadius: BorderRadius.circular(20))
+        ),
       ),
     );
   }
