@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:todo_app/constants/colors.dart';
 import 'package:todo_app/widgets/todo_item.dart';
 
+import '../model/todo.dart';
+
 class Home extends StatelessWidget {
+  final todosList = ToDo.todoList();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,11 +27,14 @@ class Home extends StatelessWidget {
                             fontSize: 30,
                             fontWeight: FontWeight.w500,
                           ))),
-                  ToDoItem(),
-                  ToDoItem(),
-                  ToDoItem(),
-                  ToDoItem(),
-                  ToDoItem(),
+                  // ToDoItem(),
+                  // ToDoItem(),
+                  // ToDoItem(),
+                  // ToDoItem(),
+                  for (ToDo todo1 in todosList)
+                    ToDoItem(
+                        todo:
+                            todo1), //here todo1 is just variable in loop that take value from our list
                 ],
               ),
             ),
