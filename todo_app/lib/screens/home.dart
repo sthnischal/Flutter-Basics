@@ -4,8 +4,14 @@ import 'package:todo_app/widgets/todo_item.dart';
 
 import '../model/todo.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   final todosList = ToDo.todoList();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,8 +41,10 @@ class Home extends StatelessWidget {
                       // ToDoItem(),
                       for (ToDo todo1 in todosList)
                         ToDoItem(
-                            todo:
-                                todo1), //here todo1 is just variable in loop that take value from our list
+                            todo: todo1,
+                            onToDoChanged: _handleToDoChange,
+                            onDeleteItem:
+                                () {}), //here todo1 is just variable in loop that take value from our list
                     ],
                   ),
                 ),
@@ -81,7 +89,7 @@ class Home extends StatelessWidget {
                     //style for button
                     style: ElevatedButton.styleFrom(
                       primary: tdBlue, // color of app
-                      minimumSize: Size(50, 50),
+                      minimumSize: Size(60, 60),
                       elevation: 10, //background of icon
                     ),
                   ),
@@ -92,6 +100,12 @@ class Home extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _handleToDoChange(ToDo todo) {
+    setState(() {
+      todo.isDone = !todo.isDone;
+    });
   }
 
   Widget searchBox() {
