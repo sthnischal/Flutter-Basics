@@ -11,7 +11,16 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final todosList = ToDo.todoList();
+  List<ToDo> _foundToDO = [];
   final _todoController = TextEditingController();
+
+  @override
+  void initState() {
+    _foundToDO =
+        todosList; //here todoslist is the database that we give earlier in todoitem
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +49,9 @@ class _HomeState extends State<Home> {
                       // ToDoItem(),
                       // ToDoItem(),
                       // ToDoItem(),
-                      for (ToDo todo1 in todosList)
+
+                      //for (ToDo todo1 in todosList)  //item seen from todoslist
+                      for (ToDo todo1 in _foundToDO)
                         ToDoItem(
                             todo: todo1,
                             onToDoChanged: _handleToDoChange,
@@ -127,12 +138,32 @@ class _HomeState extends State<Home> {
     _todoController.clear();
   }
 
+  void _runFilter(String enteredKeyword) {
+    List<ToDo> results = [];
+    if (enteredKeyword.isEmpty) {
+      results = todosList;
+    } else {
+      //main search functionalities of code is here
+      results = todosList
+          .where((item) => item.todoText!
+              .toLowerCase()
+              .contains(enteredKeyword.toLowerCase()))
+          .toList();
+    }
+
+    setState(() {
+      _foundToDO = results;
+    });
+  }
+
   Widget searchBox() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15),
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(20)),
       child: TextField(
+        onChanged: (value) =>
+            _runFilter(value), //it is used for checking searchitem at runtime
         decoration: InputDecoration(
           contentPadding: EdgeInsets.all(0),
           prefixIcon: Icon(
