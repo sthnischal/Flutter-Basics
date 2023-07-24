@@ -51,7 +51,9 @@ class _HomeState extends State<Home> {
                       // ToDoItem(),
 
                       //for (ToDo todo1 in todosList)  //item seen from todoslist
-                      for (ToDo todo1 in _foundToDO)
+                      //for (ToDo todo1 in _foundToDO)  //put new item in bottom of list
+                      for (ToDo todo1 in _foundToDO
+                          .reversed) // put new item in top of the list
                         ToDoItem(
                             todo: todo1,
                             onToDoChanged: _handleToDoChange,
