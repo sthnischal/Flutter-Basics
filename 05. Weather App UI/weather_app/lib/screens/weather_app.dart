@@ -11,7 +11,7 @@ class WeatherApp extends StatelessWidget {
           backgroundColor: Colors.transparent, //make appbar same as top section
           ///for android appbar have some shadow which can be removed by elevation make to 0
           elevation: 0,
-          title: Text('Weather App'),
+          //title: Text('Weather App'),
           leading: IconButton(
             icon: Icon(Icons.search),
             iconSize: 30,
@@ -56,13 +56,14 @@ class WeatherApp extends StatelessWidget {
                         //this widget help to locate our text in between the overall screen
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             //top column area
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  height: 120,
+                                  height: 150,
                                 ),
                                 Text(
                                   'Kathmandu',
@@ -72,9 +73,11 @@ class WeatherApp extends StatelessWidget {
                                       color: Colors.white),
                                 ),
                                 Text(
-                                  'Hello',
+                                  '7:18 AM Wednesday, 26 July 2023',
                                   style: GoogleFonts.lato(
-                                      fontSize: 22, color: Colors.white),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
                                 )
                               ],
                             ),
@@ -82,16 +85,31 @@ class WeatherApp extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Kathmandu1',
+                                  '24\u2103', //unicode value for degree celcius
                                   style: GoogleFonts.lato(
-                                      fontSize: 35,
-                                      fontWeight: FontWeight.bold,
+                                      fontSize: 85,
+                                      fontWeight: FontWeight.w300,
                                       color: Colors.white),
                                 ),
-                                Text(
-                                  'Hello1',
-                                  style: GoogleFonts.lato(
-                                      fontSize: 22, color: Colors.white),
+                                Row(
+                                  children: [
+                                    SvgPicture.asset(
+                                      'assets/moon.svg',
+                                      width: 30,
+                                      height: 30,
+                                      color: Colors.white,
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      'Night',
+                                      style: GoogleFonts.lato(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white),
+                                    ),
+                                  ],
                                 )
                               ],
                             )
@@ -107,23 +125,130 @@ class WeatherApp extends StatelessWidget {
                           )
                         ],
                       ),
-                      Row(
-                        children: [
-                          Text(
-                            'Hello2',
-                            style: GoogleFonts.lato(
-                                fontSize: 35,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
-                          ),
-                          Text(
-                            'Hello3',
-                            style: GoogleFonts.lato(
-                                fontSize: 35,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
-                          )
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              children: [
+                                Text(
+                                  'Wind',
+                                  style: GoogleFonts.lato(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                                Text(
+                                  '10',
+                                  style: GoogleFonts.lato(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                                Text(
+                                  'Km/hr',
+                                  style: GoogleFonts.lato(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                                Stack(
+                                  children: [
+                                    Container(
+                                      height: 5,
+                                      width: 50,
+                                      color: Colors.grey,
+                                    ),
+                                    Container(
+                                      height: 5,
+                                      width: 10,
+                                      color: Colors.greenAccent,
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Text(
+                                  'Rain',
+                                  style: GoogleFonts.lato(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                                Text(
+                                  '2',
+                                  style: GoogleFonts.lato(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                                Text(
+                                  '%',
+                                  style: GoogleFonts.lato(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                                Stack(
+                                  children: [
+                                    Container(
+                                      height: 5,
+                                      width: 50,
+                                      color: Colors.grey,
+                                    ),
+                                    Container(
+                                      height: 5,
+                                      width: 2,
+                                      color: Colors.redAccent,
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Text(
+                                  'Humidity',
+                                  style: GoogleFonts.lato(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                                Text(
+                                  '10',
+                                  style: GoogleFonts.lato(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                                Text(
+                                  '%',
+                                  style: GoogleFonts.lato(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                                Stack(
+                                  children: [
+                                    Container(
+                                      height: 5,
+                                      width: 50,
+                                      color: Colors.grey,
+                                    ),
+                                    Container(
+                                      height: 5,
+                                      width: 10,
+                                      color: Colors.redAccent,
+                                    )
+                                  ],
+                                )
+                              ],
+                            )
+                          ],
+                        ),
                       )
                     ],
                   ))
