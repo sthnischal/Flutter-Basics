@@ -26,8 +26,8 @@ class _WeatherAppState extends State<WeatherApp> {
       bgImg = 'assets/sunny.jpg';
     } else if (locationList[_currentPage].weatherType == 'Night') {
       bgImg = 'assets/night.jpg';
-    } else if (locationList[_currentPage].weatherType == 'Rain') {
-      bgImg = 'assets/raniy.jpg';
+    } else if (locationList[_currentPage].weatherType == 'Rainy') {
+      bgImg = 'assets/rainy.jpg';
     } else if (locationList[_currentPage].weatherType == 'Cloudy') {
       bgImg = 'assets/cloudy.jpeg';
     }
@@ -135,3 +135,10 @@ class _WeatherAppState extends State<WeatherApp> {
         ));
   }
 }
+
+
+
+
+//transition animation from one screen to other is not completely working
+// with transformer_page_view as pacakege is not working with dart version 3
+// need to work on other package with same functionality
