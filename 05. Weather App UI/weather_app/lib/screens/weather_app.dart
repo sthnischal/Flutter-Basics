@@ -12,7 +12,7 @@ class WeatherApp extends StatefulWidget {
 
 class _WeatherAppState extends State<WeatherApp> {
   int _currentPage = 0;
-  //String bgImg;
+  late String bgImg;
 
   _onPageChanged(int index) {
     setState(() {
@@ -22,13 +22,23 @@ class _WeatherAppState extends State<WeatherApp> {
 
   @override
   Widget build(BuildContext context) {
+    if (locationList[_currentPage].weatherType == 'Sunny') {
+      bgImg = 'assets/sunny.jpg';
+    } else if (locationList[_currentPage].weatherType == 'Night') {
+      bgImg = 'assets/night.jpg';
+    } else if (locationList[_currentPage].weatherType == 'Rain') {
+      bgImg = 'assets/raniy.jpg';
+    } else if (locationList[_currentPage].weatherType == 'Cloudy') {
+      bgImg = 'assets/cloudy.jpeg';
+    }
+
     return Scaffold(
         extendBodyBehindAppBar: true, //make complete app from whole screen
         appBar: AppBar(
           backgroundColor: Colors.transparent, //make appbar same as top section
           ///for android appbar have some shadow which can be removed by elevation make to 0
           elevation: 0,
-          //title: Text('Weather App'),
+          title: Text(''),
           leading: IconButton(
             icon: Icon(Icons.search),
             iconSize: 30,
@@ -54,7 +64,7 @@ class _WeatherAppState extends State<WeatherApp> {
           child: Stack(
             children: [
               Image.asset(
-                'assets/night.jpg',
+                bgImg,
                 fit: BoxFit.cover,
                 height: double.infinity, //fully covering image into screen
                 width: double.infinity,
