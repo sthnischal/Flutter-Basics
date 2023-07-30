@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/article_model.dart';
+import 'package:news_app/widgets/custom_tag.dart';
 
 import '../widgets/bottom_nav_bar.dart';
 import '../widgets/image_container.dart';
@@ -27,7 +28,22 @@ class HomeScreen extends StatelessWidget {
         ImageContainer(
           height: MediaQuery.of(context).size.height * 0.45,
           width: double.infinity,
+          padding: EdgeInsets.all(20.0),
           imageUrl: Article.articles[0].imageUrl,
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomTag(
+                    backgroundColor: Colors.grey.withAlpha(150),
+                    children: [
+                      Text('News of the day',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium!
+                              .copyWith(color: Colors.white))
+                    ])
+              ]),
         )
       ]),
     );
