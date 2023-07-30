@@ -15,7 +15,10 @@ class CustomTag extends StatelessWidget {
       padding: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
           color: backgroundColor, borderRadius: BorderRadius.circular(20.0)),
-      child: Row(mainAxisSize: MainAxisSize.min, children: children),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: children,
+      ),
     );
   }
 }
