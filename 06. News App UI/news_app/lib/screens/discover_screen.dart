@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/screens/article_screen.dart';
 import 'package:news_app/widgets/image_container.dart';
 
 import '../models/article_model.dart';
@@ -50,7 +51,8 @@ class _CategoryNews extends StatelessWidget {
       children: [
         TabBar(
           isScrollable: true,
-          indicatorColor: Colors.black,
+          //indicatorColor: Colors.black,
+          indicatorColor: Colors.blue,
           tabs: tabs
               .map(
                 (tab) => Tab(
@@ -74,55 +76,64 @@ class _CategoryNews extends StatelessWidget {
                     shrinkWrap: true,
                     itemCount: articles.length,
                     itemBuilder: (((context, index) {
-                      return Row(
-                        children: [
-                          ImageContainer(
-                            width: 80,
-                            height: 80,
-                            imageUrl: articles[index].imageUrl,
-                            margin: EdgeInsets.all(10.0),
-                            borderRadius: 5,
-                          ),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  articles[index].title,
-                                  maxLines: 2,
-                                  overflow: TextOverflow.clip,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyLarge!
-                                      .copyWith(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Row(
-                                  children: [
-                                    Icon(
-                                      Icons.schedule,
-                                      size: 18,
-                                    ),
-                                    SizedBox(width: 5),
-                                    Text(
-                                        '${DateTime.now().difference(articles[index].createdAt).inHours} Hours ago'),
-                                    SizedBox(width: 20),
-                                    Icon(Icons.visibility, size: 18),
-                                    Text(
-                                      '${articles[index].views} Views',
-                                      style: TextStyle(fontSize: 12),
-                                    )
-                                  ],
-                                )
-                              ],
+                      return InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            ArticleScreen.routeName,
+                            arguments: articles[index],
+                          );
+                        },
+                        child: Row(
+                          children: [
+                            ImageContainer(
+                              width: 80,
+                              height: 80,
+                              imageUrl: articles[index].imageUrl,
+                              margin: EdgeInsets.all(10.0),
+                              borderRadius: 5,
                             ),
-                          ),
-                        ],
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    articles[index].title,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.clip,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyLarge!
+                                        .copyWith(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.schedule,
+                                        size: 18,
+                                      ),
+                                      SizedBox(width: 5),
+                                      Text(
+                                          '${DateTime.now().difference(articles[index].createdAt).inHours} Hours ago'),
+                                      SizedBox(width: 20),
+                                      Icon(Icons.visibility, size: 18),
+                                      Text(
+                                        '${articles[index].views} Views',
+                                        style: TextStyle(fontSize: 12),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       );
                     })),
                   ),
