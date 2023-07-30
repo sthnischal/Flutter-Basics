@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/models/article_model.dart';
 
 import '../widgets/bottom_nav_bar.dart';
+import '../widgets/image_container.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -23,14 +24,10 @@ class HomeScreen extends StatelessWidget {
       bottomNavigationBar: const BottomNavBar(index: 0),
       extendBodyBehindAppBar: true,
       body: ListView(padding: EdgeInsets.zero, children: [
-        Container(
+        ImageContainer(
           height: MediaQuery.of(context).size.height * 0.45,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular((20)),
-              image: DecorationImage(
-                image: NetworkImage(Article.articles[0].imageUrl),
-                fit: BoxFit.cover,
-              )),
+          width: double.infinity,
+          imageUrl: Article.articles[0].imageUrl,
         )
       ]),
     );
