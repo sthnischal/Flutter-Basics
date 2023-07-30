@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/article_model.dart';
+import 'package:news_app/screens/article_screen.dart';
 import 'package:news_app/widgets/custom_tag.dart';
 
 import '../widgets/bottom_nav_bar.dart';
@@ -75,40 +76,50 @@ class _BreakingNews extends StatelessWidget {
                   return Container(
                     width: MediaQuery.of(context).size.width * 0.5,
                     margin: EdgeInsets.only(right: 10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ImageContainer(
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          imageUrl: articles[index].imageUrl,
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          articles[index].title,
-                          maxLines: 2, //showing max line of text 2 below image
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge!
-                              .copyWith(
-                                  fontWeight: FontWeight.bold, height: 1.5),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          '${DateTime.now().difference(articles[index].createdAt).inHours} Hours ago',
-                          style: Theme.of(context).textTheme.bodySmall,
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          '${articles[index].author}',
-                          style: Theme.of(context).textTheme.bodySmall,
-                        ),
-                      ],
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          ArticleScreen.routeName,
+                          arguments: articles[index],
+                        );
+                      },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ImageContainer(
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            imageUrl: articles[index].imageUrl,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            articles[index].title,
+                            maxLines:
+                                2, //showing max line of text 2 below image
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge!
+                                .copyWith(
+                                    fontWeight: FontWeight.bold, height: 1.5),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            '${DateTime.now().difference(articles[index].createdAt).inHours} Hours ago',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            '${articles[index].author}',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 })),
