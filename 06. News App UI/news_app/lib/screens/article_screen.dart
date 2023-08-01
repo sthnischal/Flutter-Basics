@@ -25,6 +25,38 @@ class ArticleScreen extends StatelessWidget {
         body: ListView(children: [
           _NewsHeadline(
             article: article,
+          ),
+          Container(
+            padding: EdgeInsets.all(20.0),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(20.0),
+                  topRight: Radius.circular(20.0),
+                )),
+            //color: Colors.white,
+            child: Row(children: [
+              CustomTag(backgroundColor: Colors.black, children: [
+                CircleAvatar(
+                  radius: 10,
+                  backgroundImage: NetworkImage(article.authorImageUrl),
+                ),
+                SizedBox(width: 10),
+                Text(article.author,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium!
+                        .copyWith(color: Colors.white)),
+              ]),
+              SizedBox(width: 10),
+              CustomTag(backgroundColor: Colors.grey.shade200, children: [
+                Icon(Icons.timer, color: Colors.grey),
+                SizedBox(width: 10),
+                Text(
+                    '${DateTime.now().difference(article.createdAt).inHours} h',
+                    style: Theme.of(context).textTheme.bodyMedium),
+              ]),
+            ]),
           )
         ]),
       ),
@@ -47,9 +79,7 @@ class _NewsHeadline extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.15,
-          ),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.15),
           CustomTag(backgroundColor: Colors.grey.withAlpha(150), children: [
             Text(article.category,
                 style: Theme.of(context)
