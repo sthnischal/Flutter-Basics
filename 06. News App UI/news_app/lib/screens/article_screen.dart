@@ -26,64 +26,92 @@ class ArticleScreen extends StatelessWidget {
           _NewsHeadline(
             article: article,
           ),
-          Container(
-            padding: EdgeInsets.all(20.0),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20.0),
-                  topRight: Radius.circular(20.0),
-                )),
-            //color: Colors.white,
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    CustomTag(backgroundColor: Colors.black, children: [
-                      CircleAvatar(
-                        radius: 10,
-                        backgroundImage: NetworkImage(article.authorImageUrl),
-                      ),
-                      SizedBox(width: 10),
-                      Text(article.author,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium!
-                              .copyWith(color: Colors.white)),
-                    ]),
-                    SizedBox(width: 10),
-                    CustomTag(backgroundColor: Colors.grey.shade200, children: [
-                      Icon(Icons.timer, color: Colors.grey),
-                      SizedBox(width: 10),
-                      Text(
-                          '${DateTime.now().difference(article.createdAt).inHours} h',
-                          style: Theme.of(context).textTheme.bodyMedium),
-                    ]),
-                    SizedBox(width: 10),
-                    CustomTag(backgroundColor: Colors.grey.shade200, children: [
-                      Icon(Icons.remove_red_eye, color: Colors.grey),
-                      SizedBox(width: 10),
-                      Text('${article.views}',
-                          style: Theme.of(context).textTheme.bodyMedium),
-                    ]),
-                  ],
+          _NewsBody(article: article)
+        ]),
+      ),
+    );
+  }
+}
+
+class _NewsBody extends StatelessWidget {
+  const _NewsBody({
+    super.key,
+    required this.article,
+  });
+
+  final Article article;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(20.0),
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20.0),
+            topRight: Radius.circular(20.0),
+          )),
+      //color: Colors.white,
+      child: Column(
+        children: [
+          Row(
+            children: [
+              CustomTag(backgroundColor: Colors.black, children: [
+                CircleAvatar(
+                  radius: 10,
+                  backgroundImage: NetworkImage(article.authorImageUrl),
                 ),
-                SizedBox(height: 20),
-                Text(article.title,
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineSmall!
-                        .copyWith(fontWeight: FontWeight.bold)),
-                SizedBox(height: 20),
-                Text(article.body,
+                SizedBox(width: 10),
+                Text(article.author,
                     style: Theme.of(context)
                         .textTheme
                         .bodyMedium!
-                        .copyWith(height: 1.5)),
-              ],
-            ),
-          )
-        ]),
+                        .copyWith(color: Colors.white)),
+              ]),
+              SizedBox(width: 10),
+              CustomTag(backgroundColor: Colors.grey.shade200, children: [
+                Icon(Icons.timer, color: Colors.grey),
+                SizedBox(width: 10),
+                Text(
+                    '${DateTime.now().difference(article.createdAt).inHours} h',
+                    style: Theme.of(context).textTheme.bodyMedium),
+              ]),
+              SizedBox(width: 10),
+              CustomTag(backgroundColor: Colors.grey.shade200, children: [
+                Icon(Icons.remove_red_eye, color: Colors.grey),
+                SizedBox(width: 10),
+                Text('${article.views}',
+                    style: Theme.of(context).textTheme.bodyMedium),
+              ]),
+            ],
+          ),
+          SizedBox(height: 20),
+          Text(article.title,
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineSmall!
+                  .copyWith(fontWeight: FontWeight.bold)),
+          SizedBox(height: 20),
+          Text(article.body,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium!
+                  .copyWith(height: 1.5)),
+          SizedBox(height: 10),
+          GridView.builder(
+              shrinkWrap: true,
+              itemCount: 2,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, //no. of image showing in the screen
+                  childAspectRatio: 1.25),
+              itemBuilder: (context, index) {
+                return ImageContainer(
+                  width: MediaQuery.of(context).size.width * 0.42,
+                  imageUrl: article.imageUrl,
+                  margin: EdgeInsets.only(right: 5, bottom: 5),
+                );
+              })
+        ],
       ),
     );
   }
