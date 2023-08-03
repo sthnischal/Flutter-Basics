@@ -35,28 +35,53 @@ class ArticleScreen extends StatelessWidget {
                   topRight: Radius.circular(20.0),
                 )),
             //color: Colors.white,
-            child: Row(children: [
-              CustomTag(backgroundColor: Colors.black, children: [
-                CircleAvatar(
-                  radius: 10,
-                  backgroundImage: NetworkImage(article.authorImageUrl),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    CustomTag(backgroundColor: Colors.black, children: [
+                      CircleAvatar(
+                        radius: 10,
+                        backgroundImage: NetworkImage(article.authorImageUrl),
+                      ),
+                      SizedBox(width: 10),
+                      Text(article.author,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium!
+                              .copyWith(color: Colors.white)),
+                    ]),
+                    SizedBox(width: 10),
+                    CustomTag(backgroundColor: Colors.grey.shade200, children: [
+                      Icon(Icons.timer, color: Colors.grey),
+                      SizedBox(width: 10),
+                      Text(
+                          '${DateTime.now().difference(article.createdAt).inHours} h',
+                          style: Theme.of(context).textTheme.bodyMedium),
+                    ]),
+                    SizedBox(width: 10),
+                    CustomTag(backgroundColor: Colors.grey.shade200, children: [
+                      Icon(Icons.remove_red_eye, color: Colors.grey),
+                      SizedBox(width: 10),
+                      Text('${article.views}',
+                          style: Theme.of(context).textTheme.bodyMedium),
+                    ]),
+                  ],
                 ),
-                SizedBox(width: 10),
-                Text(article.author,
+                SizedBox(height: 20),
+                Text(article.title,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineSmall!
+                        .copyWith(fontWeight: FontWeight.bold)),
+                SizedBox(height: 20),
+                Text(article.body,
                     style: Theme.of(context)
                         .textTheme
                         .bodyMedium!
-                        .copyWith(color: Colors.white)),
-              ]),
-              SizedBox(width: 10),
-              CustomTag(backgroundColor: Colors.grey.shade200, children: [
-                Icon(Icons.timer, color: Colors.grey),
-                SizedBox(width: 10),
-                Text(
-                    '${DateTime.now().difference(article.createdAt).inHours} h',
-                    style: Theme.of(context).textTheme.bodyMedium),
-              ]),
-            ]),
+                        .copyWith(height: 1.5)),
+              ],
+            ),
           )
         ]),
       ),
