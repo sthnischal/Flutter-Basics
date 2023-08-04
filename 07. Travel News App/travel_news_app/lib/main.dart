@@ -23,7 +23,7 @@ class _MyWidgetState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: kLightWhite,
+        backgroundColor: kLighterWhite,
         body: HomeScreen(),
       ),
     );
@@ -36,11 +36,47 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return SafeArea(
         //this safeare is used for top section of phone to not cut in different model
         child: ListView(
       padding: EdgeInsets.symmetric(horizontal: 30),
-      children: [],
+      children: [
+        Row(
+          children: [
+            Container(
+              height: 51,
+              width: 51,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: kLightBlue,
+                  image: const DecorationImage(
+                      image: NetworkImage(
+                          'https://cdn.iconscout.com/icon/free/png-512/avatar-380-456332.png'))),
+            ),
+            SizedBox(width: 16),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Welcome Back!',
+                  style: kPoppinsBold.copyWith(
+                    fontSize: SizeConfig.blockSizeHorizontal! * 4,
+                  ),
+                ),
+                Text(
+                  'Friday, 04 Auguest',
+                  style: kPoppinsRegular.copyWith(
+                    color: kGrey,
+                    fontSize: SizeConfig.blockSizeHorizontal! * 3,
+                  ),
+                )
+              ],
+            )
+          ],
+        )
+      ],
     ));
   }
 }
